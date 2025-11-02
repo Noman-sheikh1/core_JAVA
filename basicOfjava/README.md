@@ -93,3 +93,64 @@ class HelloWorld {
 }
 ````
 
+## 🧩 Java Program Execution Workflow
+
+When you write and run a Java program, the following process takes place:
+
+```
+1️⃣  You create a Java program and save it using the `.java` extension.
+     Example: HelloWorld.java
+
+2️⃣  The Java Compiler (`javac`) compiles the source code.
+     ➤ It checks syntax and converts the code into bytecode.
+     ➤ A new file is created with the `.class` extension.
+     Example: HelloWorld.class
+
+3️⃣  The Java Virtual Machine (JVM) reads the `.class` file.
+     ➤ JVM uses the bytecode and executes it line by line.
+
+4️⃣  The JVM looks for the entry point method:
+     public static void main(String[] args)
+     ➤ This is where the program starts executing.
+
+5️⃣  The Java Runtime Environment (JRE) provides the required libraries
+     and environment for the JVM to run the program smoothly.
+
+6️⃣  The output of the program is displayed on the console.
+```
+
+---
+
+## ⚙️ Example
+
+```java
+package basicOfjava;
+
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+```
+
+---
+
+## 🧠 Summary Diagram (Text Version)
+
+```
+Source Code (.java)
+        ↓
+Compilation (javac)
+        ↓
+Bytecode (.class)
+        ↓
+JVM (Java Virtual Machine)
+        ↓
+JRE (Java Runtime Environment)
+        ↓
+Program Execution → Output
+```
+
+
+````
+
