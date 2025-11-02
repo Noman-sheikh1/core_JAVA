@@ -523,9 +523,183 @@ System.out.println(c.model + " " + c.year);
 ---
 
 
+# 🧠 **Type Conversion & Type Casting in Java**
 
+Java is a **statically typed language**, meaning you must declare the type of a variable before using it.
+Sometimes, we need to **convert one data type into another**, and that’s where **type conversion** and **type casting** come in.
 
+---
 
+## 🔹 **1. Type Conversion (Implicit / Widening Conversion)**
+
+Also called **Automatic Type Conversion**, this happens **automatically** when:
+
+✅ Data is converted **from a smaller size type → to a larger size type**
+✅ There is **no loss of data**
+✅ The types are **compatible** (numeric types)
+
+---
+
+### 🧩 **Example:**
+
+```java
+public class Example {
+    public static void main(String[] args) {
+        int a = 10;
+        double b = a; // int → double (automatic conversion)
+        System.out.println(b);
+    }
+}
+```
+
+🖥️ **Output:**
+
+```
+10.0
+```
+
+Here, `int` (4 bytes) → `double` (8 bytes), done **automatically** by Java.
+
+---
+
+### 📘 **Widening Conversion Order (small → large):**
+
+```
+byte → short → int → long → float → double
+           ↑
+           char
+```
+
+✅ **Allowed:**
+
+```java
+byte b = 10;
+int i = b;      // OK
+float f = i;    // OK
+double d = f;   // OK
+```
+
+❌ **Not Allowed (needs explicit cast):**
+
+```java
+int i = 100;
+byte b = i; // Error - Possible loss of precision
+```
+
+---
+
+## 🔸 **2. Type Casting (Explicit / Narrowing Conversion)**
+
+Also called **Manual Type Conversion**, when you **forcefully convert** a **larger type → smaller type**.
+
+You use the **cast operator `(type)`** before the value.
+
+---
+
+### 🧩 **Example:**
+
+```java
+public class Example {
+    public static void main(String[] args) {
+        double d = 9.78;
+        int i = (int) d; // double → int (manual cast)
+        System.out.println(i);
+    }
+}
+```
+
+🖥️ **Output:**
+
+```
+9
+```
+
+⚠️ **Note:** Decimal part (`.78`) is lost → **possible data loss**.
+
+---
+
+### 📘 **Narrowing Conversion Order (large → small):**
+
+```
+double → float → long → int → short → byte
+```
+
+---
+
+### 🧮 **Example with Loss of Data:**
+
+```java
+int x = 130;
+byte y = (byte) x; // int → byte
+System.out.println(y);
+```
+
+🖥️ **Output:**
+
+```
+-126
+```
+
+⚠️ Why?
+Because byte range is **-128 to 127**, so overflow causes **data loss**.
+
+---
+
+## ⚙️ **Difference Between Type Conversion and Type Casting**
+
+| Feature      | Type Conversion (Implicit)     | Type Casting (Explicit)           |
+| ------------ | ------------------------------ | --------------------------------- |
+| Who performs | Done automatically by compiler | Done manually by programmer       |
+| Direction    | Smaller → Larger (Widening)    | Larger → Smaller (Narrowing)      |
+| Data loss    | No                             | Possible                          |
+| Syntax       | No special syntax              | Uses `(type)`                     |
+| Example      | `int a = 5; double b = a;`     | `double d = 9.8; int i = (int)d;` |
+
+---
+
+## 🧩 **Special Case: char and int**
+
+```java
+char ch = 'A';
+int ascii = ch;        // char → int (automatic)
+System.out.println(ascii); // 65
+
+int num = 66;
+char c = (char) num;   // int → char (manual)
+System.out.println(c); // B
+```
+
+---
+
+## ⚡ **Interview Tips & Key Points**
+
+🔹 **Widening** is **safe**, **automatic**, and **does not lose data**.
+🔹 **Narrowing** must be done **manually** — may cause **data loss or overflow**.
+🔹 `boolean` cannot be converted to/from any other type.
+🔹 Always remember the **conversion hierarchy** order.
+🔹 In Java, **type casting** works only between **compatible data types**.
+
+---
+
+### 🧠 **Simple Way to Remember**
+
+👉 **Small → Big = Automatic (Safe)**
+👉 **Big → Small = Manual (Risky)**
+
+---
+
+✅ **Example Summary Table**
+
+| From → To    | Conversion Type | Allowed Automatically? | Example              |
+| ------------ | --------------- | ---------------------- | -------------------- |
+| byte → int   | Widening        | ✅                      | `int i = b;`         |
+| int → double | Widening        | ✅                      | `double d = i;`      |
+| double → int | Narrowing       | ❌ (needs cast)         | `int i = (int)d;`    |
+| int → byte   | Narrowing       | ❌ (needs cast)         | `byte b = (byte)i;`  |
+| char → int   | Widening        | ✅                      | `int n = 'A';`       |
+| int → char   | Narrowing       | ❌                      | `char c = (char)97;` |
+
+---
 
 ````
 
