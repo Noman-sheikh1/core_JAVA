@@ -151,6 +151,241 @@ JRE (Java Runtime Environment)
 Program Execution → Output
 ```
 
+## 🧩 What is a Variable in Java?
+
+A **variable** in Java is like a **container** that stores a piece of data (a value) in your program.
+It gives a **name** to a memory location so you can easily use and modify that value later.
+
+---
+
+## 🧠 Think of it Like:
+
+Imagine a variable as a **labeled box** 🗃️ where you can keep something (a value) and refer to it by its label (the variable name).
+
+Example:
+📦 `int age = 20;`
+Here, the box label is **age**, and inside the box, we store **20**.
+
+---
+
+## ⚙️ Syntax
+
+```java
+dataType variableName = value;
+```
+
+Example:
+
+```java
+int number = 10;
+String name = "Noman";
+float pi = 3.14f;
+```
+
+---
+
+## 📚 Explanation
+
+| Part     | Meaning                                                            |
+| -------- | ------------------------------------------------------------------ |
+| `int`    | Data type → defines what kind of value it can hold (integer here). |
+| `number` | Variable name → label for the memory location.                     |
+| `10`     | Value stored inside the variable.                                  |
+
+---
+
+## 🧩 Types of Variables in Java
+
+Java has **three main types** of variables:
+
+1. **Local Variable**
+
+   * Declared **inside a method or block**.
+   * Can be used **only within that method**.
+     Example:
+
+   ```java
+   void display() {
+       int x = 5;   // local variable
+       System.out.println(x);
+   }
+   ```
+
+2. **Instance Variable**
+
+   * Declared **inside a class but outside any method**.
+   * Each object of the class has its own copy.
+     Example:
+
+   ```java
+   class Student {
+       String name;   // instance variable
+   }
+   ```
+
+3. **Static Variable**
+
+   * Declared using the **`static`** keyword.
+   * Shared among **all objects** of the class.
+     Example:
+
+   ```java
+   class Student {
+       static String school = "ABC School";
+   }
+   ```
+
+---
+
+
+Java has **3 main types** of variables 👇
+
+| Type                  | Where It’s Declared                       | Exists Till                      | Who Can Use It                      | Example                         |
+| --------------------- | ----------------------------------------- | -------------------------------- | ----------------------------------- | ------------------------------- |
+| **Local Variable**    | Inside a method, constructor, or block    | Only while the method is running | Only that method                    | Inside `main()` or any function |
+| **Instance Variable** | Inside a class but **outside any method** | Till the object is alive         | Each object gets its own copy       | `name`, `age`                   |
+| **Static Variable**   | Inside a class with **static keyword**    | Till the program ends            | Shared by all objects of that class | `schoolName`, `companyName`     |
+
+---
+
+## ⚔️ Instance Variable vs Static Variable (Main Difference)
+
+Let’s take a simple real-world example 👇
+
+### 🧩 Example 1: Instance and Static Variable Together
+
+```java
+class Student {
+    // Instance variable
+    String name;
+    
+    // Static variable
+    static String school = "ABC School";
+
+    Student(String n) {
+        name = n;
+    }
+
+    void display() {
+        System.out.println(name + " studies in " + school);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student("Noman");
+        Student s2 = new Student("Ayaan");
+
+        s1.display();
+        s2.display();
+
+        // Change static variable using one object
+        s2.school = "XYZ School";
+
+        System.out.println("\nAfter changing school name:\n");
+        s1.display();
+        s2.display();
+    }
+}
+```
+
+### 🖥️ Output
+
+```
+Noman studies in ABC School
+Ayaan studies in ABC School
+
+After changing school name:
+
+Noman studies in XYZ School
+Ayaan studies in XYZ School
+```
+
+---
+
+## 🧠 Explanation
+
+| Feature              | **Instance Variable**                        | **Static Variable**                               |
+| -------------------- | -------------------------------------------- | ------------------------------------------------- |
+| **Belongs To**       | Each object (instance of class)              | The class itself                                  |
+| **Keyword**          | No keyword                                   | Declared using `static`                           |
+| **Memory Copy**      | Each object has **its own copy**             | All objects share **one common copy**             |
+| **When Created**     | When object is created                       | When class is loaded into memory                  |
+| **When Deleted**     | When object is destroyed                     | When program ends                                 |
+| **How to Access**    | Using object reference                       | Using class name                                  |
+| **Storage Location** | Heap memory (inside object)                  | Method area (class-level memory)                  |
+| **Example Use**      | Data that differs per object → `name`, `age` | Common data for all → `schoolName`, `companyName` |
+
+---
+
+## 🎯 Easy Way to Remember
+
+👉 **Instance = Individual**
+
+* Each object has its own copy.
+* Example: Noman and Ayaan have different `name`.
+
+👉 **Static = Shared**
+
+* One copy shared by all objects.
+* Example: All students have the same `school`.
+
+---
+
+## 🧩 Example 2: Showing Both Together
+
+```java
+class Employee {
+    // Instance variable (unique for every employee)
+    String name;
+    int id;
+    
+    // Static variable (same for all employees)
+    static String company = "TechCorp";
+
+    Employee(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    void showDetails() {
+        System.out.println("Employee Name: " + name + ", ID: " + id + ", Company: " + company);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee e1 = new Employee("Noman", 101);
+        Employee e2 = new Employee("Ayaan", 102);
+
+        e1.showDetails();
+        e2.showDetails();
+
+        // Change static variable
+        Employee.company = "CodeWorks";
+
+        System.out.println("\nAfter company change:\n");
+        e1.showDetails();
+        e2.showDetails();
+    }
+}
+```
+
+### 🖥️ Output:
+
+```
+Employee Name: Noman, ID: 101, Company: TechCorp
+Employee Name: Ayaan, ID: 102, Company: TechCorp
+
+After company change:
+
+Employee Name: Noman, ID: 101, Company: CodeWorks
+Employee Name: Ayaan, ID: 102, Company: CodeWorks
+```
+
+---
+
+
 
 ````
 
