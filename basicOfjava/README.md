@@ -383,7 +383,147 @@ Employee Name: Noman, ID: 101, Company: CodeWorks
 Employee Name: Ayaan, ID: 102, Company: CodeWorks
 ```
 
+
 ---
+
+# 🧠 Java Data Types (Simplified Notes)
+
+Java is a **statically typed** language — meaning each variable’s **type is known at compile time**.
+Every variable in Java must have a **data type** that defines the **size, range, and type of values** it can hold.
+
+---
+
+## 🔹 Categories of Data Types
+
+Java data types are divided into **two main categories**:
+
+| Category                                 | Description                                            | Examples                                                             |
+| ---------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------- |
+| **Primitive Data Types**                 | Store **simple values directly** in memory.            | `boolean`, `byte`, `char`, `short`, `int`, `long`, `float`, `double` |
+| **Non-Primitive (Reference) Data Types** | Store **references (addresses)** of objects in memory. | `String`, `Array`, `Class`, `Interface`, `Object`                    |
+
+---
+
+## 🧩 1. Primitive Data Types (8 Types)
+
+| Type        | Size    | Default  | Example                     | Range/Info                      |
+| ----------- | ------- | -------- | --------------------------- | ------------------------------- |
+| **boolean** | ~1 byte | `false`  | `boolean isJavaFun = true;` | Only `true` or `false`          |
+| **byte**    | 1 byte  | `0`      | `byte a = 25;`              | -128 to 127                     |
+| **short**   | 2 bytes | `0`      | `short s = 1000;`           | -32,768 to 32,767               |
+| **int**     | 4 bytes | `0`      | `int x = 100000;`           | -2,147,483,648 to 2,147,483,647 |
+| **long**    | 8 bytes | `0L`     | `long pop = 7800000000L;`   | Huge integer range              |
+| **float**   | 4 bytes | `0.0f`   | `float pi = 3.14f;`         | 6–7 decimal digits              |
+| **double**  | 8 bytes | `0.0d`   | `double pi = 3.14159;`      | 15–16 decimal digits            |
+| **char**    | 2 bytes | `\u0000` | `char ch = 'A';`            | Unicode (0–65535)               |
+
+✅ **Note:**
+Java uses **Unicode**, not ASCII — that’s why `char` takes **2 bytes** (to support all languages).
+
+---
+
+### 🔸 Example — Using All Primitive Types
+
+```java
+class DataTypesDemo {
+    public static void main(String[] args) {
+        boolean b = true;
+        byte by = 10;
+        short s = 200;
+        int i = 1000;
+        long l = 9999999L;
+        float f = 3.14f;
+        double d = 9.81;
+        char c = 'A';
+
+        System.out.println(b + " " + by + " " + s + " " + i + " " + l + " " + f + " " + d + " " + c);
+    }
+}
+```
+
+---
+
+## 🧩 2. Non-Primitive (Reference) Data Types
+
+These don’t store the actual value directly, but **store the memory address (reference)** of the object.
+
+### 🧱 Examples
+
+| Type          | Description                                   | Example                              |
+| ------------- | --------------------------------------------- | ------------------------------------ |
+| **String**    | Sequence of characters stored as an object.   | `String name = "Noman";`             |
+| **Array**     | Collection of similar data types.             | `int[] num = {1, 2, 3};`             |
+| **Class**     | Blueprint for creating objects.               | `class Car { String model; }`        |
+| **Object**    | Instance of a class.                          | `Car myCar = new Car();`             |
+| **Interface** | Contains abstract methods for implementation. | `interface Animal { void sound(); }` |
+
+---
+
+### 🧩 Example — Non-Primitive Types
+
+```java
+// String Example
+String name = "Java";
+System.out.println(name);
+
+// Array Example
+int[] numbers = {1, 2, 3};
+System.out.println(numbers[0]);
+
+// Class & Object Example
+class Car {
+    String model;
+    int year;
+
+    Car(String m, int y) {
+        model = m;
+        year = y;
+    }
+}
+Car c = new Car("Toyota", 2024);
+System.out.println(c.model + " " + c.year);
+```
+
+---
+
+## ⚖️ Primitive vs Non-Primitive (Quick Comparison)
+
+| Aspect         | Primitive              | Non-Primitive                           |
+| -------------- | ---------------------- | --------------------------------------- |
+| **Stored in**  | Stack memory           | Heap memory (reference stored in stack) |
+| **Stores**     | Actual value           | Address (reference) of object           |
+| **Speed**      | Faster                 | Slower                                  |
+| **Created by** | Java language          | Programmer (class, array, string)       |
+| **Examples**   | `int`, `char`, `float` | `String`, `Array`, `Class`              |
+
+---
+
+## 💾 Heap vs Stack Memory (Very Important for Interview)
+
+| Concept          | Explanation                                                                 |
+| ---------------- | --------------------------------------------------------------------------- |
+| **Stack Memory** | Stores primitive values and references to objects. Fast and limited.        |
+| **Heap Memory**  | Stores actual objects (like String, Arrays, Objects). Shared among threads. |
+
+✅ **So in Java:**
+
+* **Primitive types** (like `int`, `boolean`) → stored in **stack**.
+* **Reference types** (like `String`, `Array`, `Object`) → **reference (address)** in stack, but **actual data/object** in **heap**.
+
+---
+
+## 🔍 Comparison with C and C++
+
+| Concept               | Java                                   | C / C++                                                            |
+| --------------------- | -------------------------------------- | ------------------------------------------------------------------ |
+| **Strings**           | Stored in **heap** as objects          | Stored in **stack** or **static memory** as char arrays            |
+| **Arrays**            | Always **objects**, stored in **heap** | Can be in **stack** (local) or **heap** (if dynamically allocated) |
+| **Memory Management** | Automatic (via Garbage Collector)      | Manual (via `malloc`, `free`, or `new`, `delete`)                  |
+
+---
+
+
+
 
 
 
