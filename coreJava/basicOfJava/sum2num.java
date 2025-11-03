@@ -1,4 +1,4 @@
-package basicOfjava;
+package coreJava.basicOfJava;
 
 public class sum2num {
     public static void main(String[] args) {

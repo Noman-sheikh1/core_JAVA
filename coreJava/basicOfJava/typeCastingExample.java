@@ -1,4 +1,4 @@
-package basicOfjava;
+package coreJava.basicOfJava;
 
 public class typeCastingExample {
     public static void main(String[] args){
